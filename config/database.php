@@ -68,7 +68,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'Scan'),
+            'database' => env('DB_DATABASE', 'abull_db'),
             'username' => env('DB_USERNAME', 'joinax'),
             'password' => env('DB_PASSWORD', 'qwerty'),
             'charset' => 'utf8',

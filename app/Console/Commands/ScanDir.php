@@ -45,7 +45,7 @@ class ScanDir extends Command
                 // $ctime = filectime($data_path . $file) . ',' . $file;
                 // UPD:
                 $ctime = filectime($path . $file);
-                //$dat = \Carbon\Carbon::createFromTimestamp($ctime)->format('Y-m-d');
+                $dat = \Carbon\Carbon::createFromTimestamp($ctime)->format('Y-m-d');
                 // $date_mas = getdate ($ctime);
                 // if ($date_mas['mday'] < 10) {$date_mas['mday'] = '0'.$date_mas['mday'];}
                 // if ($date_mas['mon'] < 10) {$date_mas['mon'] = '0'.$date_mas['mon'];}
