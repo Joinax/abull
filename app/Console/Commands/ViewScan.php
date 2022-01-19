@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Console\Commands;
-
-use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
-class DbConnect extends Command
+use Illuminate\Console\Command;
+
+class ViewScan extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'DbConnect';
+    protected $signature = 'ViewScan';
 
     /**
      * The console command description.
@@ -30,10 +30,17 @@ class DbConnect extends Command
      */
     public function handle()
     {
-        //DB::insert('insert into scan (scan_name, scan_date) values (?, ?)', ['tests', 23.09]);
-        //DB::delete('delete from scan');
-        DB::table('scan')->truncate();
+        $scanvin = $this->index();
+        dd($scanvin);
     }
 
+    public function index(){ 
+
+        $scanvin = DB::table('scan')->get();
+
+        return view('scan_name', ['scan' => $scanvin]);
+    }
+        
+        
     
 }
