@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Console\Commands;
-use Illuminate\Support\Facades\DB;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class ViewScan extends Command
 {
@@ -30,15 +31,19 @@ class ViewScan extends Command
      */
     public function handle()
     {
-        $scanvin = $this->index();
+        $scanvin = $this->viewscan();
         dd($scanvin);
     }
 
-    public function index(){ 
+    public function viewscan(){ 
 
-        $scanvin = DB::table('scan')->get();
-
-        return view('scan_name', ['scan' => $scanvin]);
+        $scanvin = DB::table('scan')
+            ->latest('id')
+            ->first();
+           
+        //$scanvin[] = $scanvins;
+        return $scanvin;
+        
     }
         
         

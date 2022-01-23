@@ -42,9 +42,10 @@ class ScanDir extends Command
             
             if ($file != '.' and $file != '..' and $file != 'test'){
                 $ctime = filectime($path . $file);
-                //$dat = \Carbon\Carbon::createFromTimestamp($ctime)->format('Y-m-d h:i:s');
-                //$dat = \Carbon\Carbon::createFromTimestamp($ctime)->toDateTimeString();               
+                //$dat = \Carbon\Carbon::createFromTimestamp($ctime)->format('d-m-y');
+                $dat = \Carbon\Carbon::createFromTimestamp($ctime)->toDateTimeString();               
                 $dat = getdate ($ctime);
+                
                 $list[] = [$dat, $file];
                 DB::insert('insert into scan (scan_name, scan_date) values (?, ?)', [ $list[0][1], $list[0][0][0]]);
                 // if (!file_exists('./storage/app/public' . '/' . $dat))
