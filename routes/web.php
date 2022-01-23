@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ScanController@secure');
 
-Route::get('/secure', function () {
-    return view('app/secure');
-});
+// Route::get('/secure', function () {
+//     return view('app/secure');
+// });
+
+

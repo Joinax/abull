@@ -30,8 +30,6 @@ class DbConnect extends Command
      */
     public function handle()
     {
-        //DB::insert('insert into scan (scan_name, scan_date) values (?, ?)', ['tests', 23.09]);
-        //DB::delete('delete from scan');
         DB::table('scan')->truncate();
     }
 

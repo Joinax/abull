@@ -1,10 +1,13 @@
-@extends('./layouts/layouts')
-
-@section('title')Secure
-@endsection
-
-@section('secure_content')
-    <form class="guruweba_example_form" name="feedback" method="POST" action="/feedback.php">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure</title>
+</head>
+<body>
+    <!-- <form class="guruweba_example_form" name="feedback" method="POST" action="/feedback.php">
         <div>Номер транспортного средства</div>
             <input type="vin_name" name="vin_name" required="required">
         <div>Время въезда</div>
@@ -17,5 +20,6 @@
                 <option>Сотрудничество</option>
                 <option>Пожелания / предложения</option>
             </select>
-    </form>
-@endsection
+    </form> -->
+</body>
+</html>

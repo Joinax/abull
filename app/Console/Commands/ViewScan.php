@@ -36,15 +36,15 @@ class ViewScan extends Command
     }
 
     public function viewscan(){ 
-
+        
         $scanvin = DB::table('scan')
             ->latest('id')
             ->first();
            
-        //$scanvin[] = $scanvins;
-        return $scanvin;
+        return (array)$scanvin;
         
     }
+
         
         
     
