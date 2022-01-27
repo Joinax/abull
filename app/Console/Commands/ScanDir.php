@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use App\Models\Event;
 
 class ScanDir extends Command
 {
@@ -41,9 +42,12 @@ class ScanDir extends Command
                 $ctime = filectime($path . $file);
                 $date = \Carbon\Carbon::createFromTimestamp($ctime)->format('d-m-y');
                 //$dat = \Carbon\Carbon::createFromTimestamp($ctime)->toDateTimeString();               
-               // $dat = getdate ($ctime);              
-                $list[] = [$date, $file];
-                DB::insert('insert into events (file_name, type) values (?, ?)', [ $list[0][1], 1]);
+                //$date = getdate ($ctime);              
+                $list = [$date, $file];
+                $row = Event::create([
+                    'type' => 1,
+                    'file_name' => $list[1]
+                ]);
                 if (!file_exists('./storage/app/public' . '/' . $date))
                 mkdir('./storage/app/public' . '/' . $date); 
                 rename($path . $file, './storage/app/public' . '/' .  $date . '/' . $file);

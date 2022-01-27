@@ -16,7 +16,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::where('status', false)->first();
-        
+        //dd($events);
         return view('app/secure', compact('events'));
     }
 

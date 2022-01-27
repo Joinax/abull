@@ -9,7 +9,6 @@ class ScanController extends Controller
 {
     public function secure(){
 
-        // return view('secure');
         $scanview = ScanView::latest('id')
                             ->first();
         dd($scanview);
