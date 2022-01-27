@@ -30,7 +30,7 @@ class DbConnect extends Command
      */
     public function handle()
     {
-        DB::table('scan')->truncate();
+        DB::table('events')->truncate();
     }
 
     

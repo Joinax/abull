@@ -31,10 +31,6 @@ class ScanDir extends Command
     public function handle()
     {
         $list = $this->listdir_by_date('./storage/app/public/upload/');
-        $scanvin = $this->viewscan();
-        
-        dd($scanvin);
-        //dd($list[0][0][0], $list[0][1]);
     }
 
     public function listdir_by_date($path){ 
@@ -44,10 +40,10 @@ class ScanDir extends Command
             if ($file != '.' and $file != '..' and $file != 'test'){
                 $ctime = filectime($path . $file);
                 $date = \Carbon\Carbon::createFromTimestamp($ctime)->format('d-m-y');
-                $dat = \Carbon\Carbon::createFromTimestamp($ctime)->toDateTimeString();               
-                $dat = getdate ($ctime);              
-                $list[] = [$dat, $file];
-                DB::insert('insert into scan (scan_name, scan_date) values (?, ?)', [ $list[0][1], $list[0][0][0]]);
+                //$dat = \Carbon\Carbon::createFromTimestamp($ctime)->toDateTimeString();               
+               // $dat = getdate ($ctime);              
+                $list[] = [$date, $file];
+                DB::insert('insert into events (file_name, type) values (?, ?)', [ $list[0][1], 1]);
                 if (!file_exists('./storage/app/public' . '/' . $date))
                 mkdir('./storage/app/public' . '/' . $date); 
                 rename($path . $file, './storage/app/public' . '/' .  $date . '/' . $file);
@@ -55,12 +51,5 @@ class ScanDir extends Command
         }
         closedir($dir);
         return $list;
-    }
-
-    public function viewscan(){     
-        $scanvin = DB::table('scan')
-            ->latest('id')
-            ->first();          
-        return (array)$scanvin;     
     }
 }

@@ -6,16 +6,19 @@
 @section('secure_content')
     <form class="guruweba_example_form" name="feedback" method="POST" action="/feedback.php">
         <div>Номер транспортного средства</div>
-            <input type="vin_name" name="vin_name" required="required">
+            <input type="name" name="name" required="required" value= {{$events-> file_name}}>
+
+                <div>{{ $events->file_name }}</div>
+
         <div>Время въезда</div>
             <input type="vin_date" name="vin_date" required="required">
-        <div class="contragent">Контрагент</div>
+        <div class="contragent">Причина въезда</div>
             <select name="theme" required="required">
                 <option value="">Выберите вариант</option>
-                <option>Вопрос по работе сервиса</option>
-                <option>Помощь в оформлении заказа</option>
-                <option>Сотрудничество</option>
-                <option>Пожелания / предложения</option>
+                <option>Стоянка</option>
+                <option>Ремонт</option>
+                <option>Сотрудники</option>
+                <option>Доставка</option>
             </select>
     </form>
 @endsection
