@@ -48,9 +48,9 @@ class ScanDir extends Command
                     'type' => 1,
                     'file_name' => $list[1]
                 ]);
-                if (!file_exists('./storage/app/public' . '/' . $date))
-                mkdir('./storage/app/public' . '/' . $date); 
-                rename($path . $file, './storage/app/public' . '/' .  $date . '/' . $file);
+                // if (!file_exists('./storage/app/public' . '/' . $date))
+                // mkdir('./storage/app/public' . '/' . $date); 
+                // rename($path . $file, './storage/app/public' . '/' .  $date . '/' . $file);
             }
         }
         closedir($dir);
