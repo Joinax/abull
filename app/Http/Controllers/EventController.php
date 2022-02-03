@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Contragent;
 use App\Console\Commands\ScanDir;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Foreach_;
@@ -17,7 +18,8 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::where('status', false)->first();
-        return view('app/secure', compact('events'));
+        $agents = Contragent::all();
+        return view('app/secure', compact('events', 'agents'));
     }
 
     /**

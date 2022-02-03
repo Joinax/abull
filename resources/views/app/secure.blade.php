@@ -28,10 +28,9 @@
             <label class="input-group-text" for="inputGroupSelect01">Контрагент</label>
                 <select class="form-select" id="inputGroupSelect01">
                     <option selected>Выберите вариант...</option>
-                    <option value="1">Стоянка</option>
-                    <option value="2">Ремонт</option>
-                    <option value="3">Сотрудники</option>
-                    <option value="4">Доставка</option>
+                    @foreach($agents as $agent)
+                    <option value = "{{$agent->id}}">{{$agent->contragent}}</option>
+                    @endforeach
                 </select>
         </div>
         <div class="col-12">

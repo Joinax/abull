@@ -24,7 +24,51 @@ class ContragentController extends Controller
      */
     public function create()
     {
-        //
+        $agentsArr = [
+            [
+                'contragent' => 'АТЛ+'
+            ],
+            [
+                'contragent' => 'ДЛ-Транс'
+            ],
+            [
+                'contragent' => 'Интракт'
+            ],
+            [
+                'contragent' => 'Сервис Транс'
+            ],
+            [
+                'contragent' => 'Бертчи Раша'
+            ],
+            [
+                'contragent' => 'Бертчи Владимир'
+            ],
+            [
+                'contragent' => 'Бертчи НН'
+            ],
+            [
+                'contragent' => 'Бертчи Москва'
+            ],
+            [
+                'contragent' => 'Звонков ИП'
+            ],
+            [
+                'contragent' => 'Автокар'
+            ],
+            [
+                'contragent' => 'ТЭК Нровдвест'
+            ],
+            [
+                'contragent' => 'Гарпун'
+            ],
+            [
+                'contragent' => 'БИГ Сити'
+            ],
+        ];
+
+         foreach ($agentsArr as $agent){
+             Contragent::create($agent);
+         }
     }
 
     /**

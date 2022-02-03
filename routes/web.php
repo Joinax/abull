@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'EventController@index');
 
-// Route::get('/secure', function () {
-//     return view('app/secure');
-// });
+Route::get('/agent', 'ContragentController@create');
 
 

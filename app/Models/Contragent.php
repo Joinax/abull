@@ -10,6 +10,6 @@ class Contragent extends Model
     use HasFactory;
 
     protected $table = 'contragents';
-    protected $timestamp = false;
+    public $timestamps = false;
     protected $guarded = [];
 }
