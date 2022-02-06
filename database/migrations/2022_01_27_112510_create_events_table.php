@@ -18,8 +18,9 @@ class CreateEventsTable extends Migration
             $table->integer('type');
             $table->boolean('status')->default(0);
             $table->string('file_name');
-            $table->string('number');
-            $table->string('contragent');
+            $table->string('number')->nullable();
+            $table->string('reason')->nullable();
+            $table->string('contragent')->nullable();
             $table->timestamps();
         });
     }

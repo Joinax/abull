@@ -74,7 +74,20 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $data = request()->validate([
+            'file_name' => 'string',
+            'reason' => '',
+            'contragent' => '',
+        ]);
+        // dd($event->update($data));
+        // dd($data);
+        $event->status = true;
+        $event->update($data);
+        // $event->file_name = $data['file_name'];
+        // $event->reason = $data['reason'];
+        // $event->contragent= $data['contragent'];
+        // $event->save();
+        return redirect()->route('event.index');
     }
 
     /**

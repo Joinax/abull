@@ -10,5 +10,6 @@ class Event extends Model
     use HasFactory;
 
     protected $table = 'events';
-    protected $guarded = [];
+    //protected $guarded = [];
+    protected $fillable =['type', 'file_name', 'reason', 'contragent'];
 }
