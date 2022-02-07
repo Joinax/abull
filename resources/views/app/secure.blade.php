@@ -5,13 +5,13 @@
 
 @section('secure_content')
 
-    <form class="row g-3" action="{{route('event.update', $events->id)}}" method="post">
+    <form class="row g-3" action="{{route('secure.update', $event->id)}}" method="post">
         @csrf
         @method('patch')
-        <img src="{{ asset('storage') . '/upload/' . $events->file_name }}" class="img-thumbnail" alt="No Image">
+        <img src="{{ asset('storage') . '/upload/' . $event->file_name }}" class="img-thumbnail" alt="No Image">
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Номер ТС:</span>
-            <input type="text" name="file_name" class="form-control" value="{{ $events->file_name }}">
+            <input type="text" name="file_name" class="form-control" value="{{ $event->file_name }}">
         </div>
         <div class="input-group">
             <label class="input-group-text" for="inputGroupSelect01">Причина въезда</label>
@@ -25,7 +25,7 @@
         </div>
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Время въезда:</span>
-            <span class="form-control" name="created_at">{{ $events->created_at->format('H:i:s Y-m-d')}}</span>
+            <span class="form-control">{{ $event->created_at->format('H:i:s Y-m-d')}}</span>
         </div>
         <div class="input-group">
             <label class="input-group-text" for="inputGroupSelect01">Контрагент</label>
@@ -41,5 +41,4 @@
         </div>
     </form>
 
-    <span class="input-group-text" id="basic-addon1">Номер ТС:</span>
 @endsection

@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/secure', 'EventController@index')->name('event.index');
+//Route::get('/secure', 'EventController@index')->name('event.index');
+// Route::put('/secure/{event}', 'EventController@update')->name('event.update');
 
+
+
+Route::resource('/secure', EventController::class);
 Route::get('/agent', 'ContragentController@create');
-Route::patch('/secure/{event}', 'EventController@update')->name('event.update');
-
-
