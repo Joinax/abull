@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::resource('/secure', EventController::class);
+Route::resource('/event', EventController::class);
 Route::get('/agent', 'ContragentController@create');

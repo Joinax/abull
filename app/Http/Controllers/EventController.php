@@ -17,13 +17,11 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-            
+    {      
         $event = Event::where('status', false)->first();
         $agents = Contragent::all();
         if (!$event) {
             $event = new Event();
-            $event->created_at = '';
         }
         return view('app/secure', compact('event', 'agents'));
     }
@@ -87,6 +85,21 @@ class EventController extends Controller
         ]);
         $event->status = true;
         $event->update($data);
+
+        /*Переносим файл из upload*/
+
+        $path = '../storage/app/public/upload/';
+        $dir = opendir($path);
+            while ($file = readdir($dir)){          
+                if ($file != '.' and $file != '..' and $file != 'test'){
+                    $ctime = filectime($path . $file);
+                    $date = \Carbon\Carbon::createFromTimestamp($ctime)->format('d-m-y');
+            if (!file_exists('../storage/app/public' . '/' . $date))
+            mkdir('../storage/app/public' . '/' . $date); 
+            rename($path . $file, '../storage/app/public' . '/' .  $date . '/' . $file);
+                }
+            }
+        closedir($dir);
         return redirect()->route('event.index');
     }
 

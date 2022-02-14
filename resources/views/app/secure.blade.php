@@ -4,10 +4,33 @@
 @endsection
 
 @section('secure_content')
-
-    <form class="row g-3" action="{{route('secure.update', $event->id)}}" method="post">
+    @if (!$event->file_name)
+    <form class="row g-3">
+        <img src="" class="img-thumbnail" alt="No Image">
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Номер ТС:</span>
+            <span class="form-control"></span>
+        </div>
+        <div class="input-group">
+            <label class="input-group-text" for="inputGroupSelect01">Причина въезда</label>
+            <span class="form-control"></span>
+        </div>
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Время въезда:</span>
+            <span class="form-control"></span>
+        </div>
+        <div class="input-group">
+            <label class="input-group-text" for="inputGroupSelect01">Контрагент</label>
+            <span class="form-control"></span>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-success" type="submit" disabled>Разрешить въезд</button>
+        </div>
+    </form>
+    @else
+    <form class="row g-3" action="{{route('event.update', $event->id)}}" method="post">
         @csrf
-        @method('patch')
+        @method('put')
         <img src="{{ asset('storage') . '/upload/' . $event->file_name }}" class="img-thumbnail" alt="No Image">
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Номер ТС:</span>
@@ -40,5 +63,5 @@
             <button class="btn btn-success" type="submit">Разрешить въезд</button>
         </div>
     </form>
-
+    @endif
 @endsection
